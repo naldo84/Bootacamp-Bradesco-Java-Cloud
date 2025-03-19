@@ -2,11 +2,11 @@ package Desafios.Sudoku;
 
 import java.util.Map;
 import java.util.Scanner;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
+import static java.util.stream.Collectors.toMap;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,17 +22,12 @@ public class Inicio {
     private final static int BOARD_lIMIT = 9;
 
     public static void main(String[] args) {
-        // final var positions = Stream.of(args)
-        // .collect(Collectors.toMap(
-        //     k -> k.split(",")[0] + "," + k.split(",")[1],
-        //     v -> v.split(",")[2] + "," + v.split(",")[3]
-        // ));
-
         final var positions = Stream.of(args)
-        .collect(Collectors.toMap(
-            k -> k.split(",")[0] + "," + k.split(",")[1],
-            v -> v.split(",")[2] + "," + v.split(",")[3]
-        ));
+                .collect(toMap(
+                        k -> k.split(";")[0],
+                        v -> v.split(";")[1]
+
+                ));
 
         int option = -1;
 
@@ -93,15 +88,7 @@ public class Inicio {
         for (int i = 0; i < BOARD_lIMIT; i++){
             spaces.add(new ArrayList<>());
             for (int j = 0; j < BOARD_lIMIT; j++) {
-                var positionKey = "%s,%s".formatted(i, j);
-                var positionConfig = positions.get(positionKey);
-                if (isNull(positionConfig)){
-                    System.out.printf("Configuração da posição não encontrada para a chave: %s\n", positionKey);
-                    return;
-                }
-
-                //continua...
-                //var positionConfig = positions.get("%s,%s".formatted(i, j));
+                var positionConfig = positions.get("%s,%s".formatted(i, j));
                 var expected = Integer.parseInt(positionConfig.split(",")[0]);
                 var fixed = Boolean.parseBoolean(positionConfig.split(",")[1]);
                 var currentSpace = new Space(expected, fixed);
