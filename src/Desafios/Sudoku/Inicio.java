@@ -48,6 +48,7 @@ public class Inicio {
             switch (option) {
                 case 1:
                     startGame(positions);
+                    showCurrentGame();
                     break;
                 case 2:
                     inputNumber();                
@@ -126,13 +127,11 @@ public class Inicio {
             return;
         }
 
-        System.out.println("Informe a coluna: ");
+        System.out.print("Informe a coluna: ");
         var col = runUntilValidNumber(0, 8);
 
-        System.out.println("Informe a linha: ");
+        System.out.print("Informe a linha: ");
         var row = runUntilValidNumber(0, 8);
-
-        System.out.printf("Informe o número da posição [%s, %s]\n", col, row);
 
         if (!board.clearValue(col, row)){
             System.out.printf("A posição [%s, %s] tem um valor fixo\n", col, row);
@@ -183,7 +182,7 @@ public class Inicio {
 
         System.out.println("Tem certeza que deseja limpar o seu game? ");
         var confirm = scanner.next();
-        while (!confirm.equalsIgnoreCase("sim") || !confirm.equalsIgnoreCase("não")) {
+        while (!confirm.equalsIgnoreCase("sim") && !confirm.equalsIgnoreCase("não")) {
             System.out.println("Digite sim ou não: ");
             confirm = scanner.next();
         }
