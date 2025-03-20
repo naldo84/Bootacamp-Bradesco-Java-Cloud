@@ -26,6 +26,5 @@ public class MainUi {
                 ));
         var mainScreen = new MainScreen(gameConfig);
         mainScreen.buildMainScreen();
-
     }
 }
