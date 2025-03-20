@@ -1,8 +1,8 @@
-package Desafios.Sudoku.service;
+package Desafios.Projetos.Sudoku.service;
 
-import Desafios.Sudoku.model.Board;
-import Desafios.Sudoku.model.GameStatusEnum;
-import Desafios.Sudoku.model.Space;
+import Desafios.Projetos.Sudoku.model.Board;
+import Desafios.Projetos.Sudoku.model.GameStatusEnum;
+import Desafios.Projetos.Sudoku.model.Space;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,11 +1,11 @@
-package Desafios.Sudoku.model;
+package Desafios.Projetos.Sudoku.model;
 
 import java.util.Collection;
 import java.util.List;
 
-import static Desafios.Sudoku.model.GameStatusEnum.COMPLETE;
-import static Desafios.Sudoku.model.GameStatusEnum.INCOMPLETE;
-import static Desafios.Sudoku.model.GameStatusEnum.NON_STARTED;
+import static Desafios.Projetos.Sudoku.model.GameStatusEnum.COMPLETE;
+import static Desafios.Projetos.Sudoku.model.GameStatusEnum.INCOMPLETE;
+import static Desafios.Projetos.Sudoku.model.GameStatusEnum.NON_STARTED;
 import static java.util.Objects.isNull;
 import static java.util.Objects.nonNull;
 

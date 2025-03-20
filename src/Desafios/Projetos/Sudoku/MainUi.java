@@ -1,11 +1,7 @@
-package Desafios.Sudoku;
+package Desafios.Projetos.Sudoku;
 
-import Desafios.Sudoku.ui.custom.frame.MainFrame;
-import Desafios.Sudoku.ui.custom.panel.MainPanel;
-import Desafios.Sudoku.ui.custom.screen.MainScreen;
+import Desafios.Projetos.Sudoku.ui.custom.screen.MainScreen;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;

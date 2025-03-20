@@ -1,6 +1,6 @@
-package Desafios.Sudoku.ui.custom.panel;
+package Desafios.Projetos.Sudoku.ui.custom.panel;
 
-import Desafios.Sudoku.ui.custom.input.NumberText;
+import Desafios.Projetos.Sudoku.ui.custom.input.NumberText;
 
 import javax.swing.*;
 import javax.swing.border.LineBorder;

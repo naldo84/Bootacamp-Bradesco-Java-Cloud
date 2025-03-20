@@ -1,4 +1,4 @@
-package Desafios.Sudoku.Util;
+package Desafios.Projetos.Sudoku.Util;
 
 public final class BoardTemplate {
 

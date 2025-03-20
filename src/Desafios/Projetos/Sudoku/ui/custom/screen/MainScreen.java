@@ -1,15 +1,15 @@
-package Desafios.Sudoku.ui.custom.screen;
+package Desafios.Projetos.Sudoku.ui.custom.screen;
 
-import Desafios.Sudoku.model.Space;
-import Desafios.Sudoku.service.BoardService;
-import Desafios.Sudoku.service.NotifierService;
-import Desafios.Sudoku.ui.custom.button.CheckGameStatusButton;
-import Desafios.Sudoku.ui.custom.button.FinishGameButton;
-import Desafios.Sudoku.ui.custom.button.ResetButton;
-import Desafios.Sudoku.ui.custom.frame.MainFrame;
-import Desafios.Sudoku.ui.custom.input.NumberText;
-import Desafios.Sudoku.ui.custom.panel.MainPanel;
-import Desafios.Sudoku.ui.custom.panel.SudokuSector;
+import Desafios.Projetos.Sudoku.model.Space;
+import Desafios.Projetos.Sudoku.service.BoardService;
+import Desafios.Projetos.Sudoku.service.NotifierService;
+import Desafios.Projetos.Sudoku.ui.custom.button.CheckGameStatusButton;
+import Desafios.Projetos.Sudoku.ui.custom.button.FinishGameButton;
+import Desafios.Projetos.Sudoku.ui.custom.button.ResetButton;
+import Desafios.Projetos.Sudoku.ui.custom.frame.MainFrame;
+import Desafios.Projetos.Sudoku.ui.custom.input.NumberText;
+import Desafios.Projetos.Sudoku.ui.custom.panel.MainPanel;
+import Desafios.Projetos.Sudoku.ui.custom.panel.SudokuSector;
 
 import javax.swing.*;
 import java.awt.*;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import static Desafios.Sudoku.service.EventEnum.CLEAR_SPACE;
+import static Desafios.Projetos.Sudoku.service.EventEnum.CLEAR_SPACE;
 import static javax.swing.JOptionPane.showConfirmDialog;
 import static javax.swing.JOptionPane.showMessageDialog;
 

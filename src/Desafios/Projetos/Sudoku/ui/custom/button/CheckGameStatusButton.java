@@ -1,4 +1,4 @@
-package Desafios.Sudoku.ui.custom.button;
+package Desafios.Projetos.Sudoku.ui.custom.button;
 
 import javax.swing.*;
 import java.awt.event.ActionListener;

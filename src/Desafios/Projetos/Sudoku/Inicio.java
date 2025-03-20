@@ -1,4 +1,4 @@
-package Desafios.Sudoku;
+package Desafios.Projetos.Sudoku;
 
 import java.util.Map;
 import java.util.Scanner;
@@ -11,9 +11,9 @@ import static java.util.stream.Collectors.toMap;
 import java.util.ArrayList;
 import java.util.List;
 
-import Desafios.Sudoku.Util.BoardTemplate;
-import Desafios.Sudoku.model.Board;
-import Desafios.Sudoku.model.Space;
+import Desafios.Projetos.Sudoku.Util.BoardTemplate;
+import Desafios.Projetos.Sudoku.model.Board;
+import Desafios.Projetos.Sudoku.model.Space;
 
 public class Inicio {
 

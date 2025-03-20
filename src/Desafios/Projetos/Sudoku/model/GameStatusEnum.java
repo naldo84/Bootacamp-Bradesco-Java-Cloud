@@ -1,4 +1,4 @@
-package Desafios.Sudoku.model;
+package Desafios.Projetos.Sudoku.model;
 
 public enum GameStatusEnum {
     NON_STARTED ("Não iniciado!"),

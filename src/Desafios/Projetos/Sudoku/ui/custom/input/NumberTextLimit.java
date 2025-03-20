@@ -1,4 +1,4 @@
-package Desafios.Sudoku.ui.custom.input;
+package Desafios.Projetos.Sudoku.ui.custom.input;
 
 import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;

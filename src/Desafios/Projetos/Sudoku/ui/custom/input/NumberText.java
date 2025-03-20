@@ -1,8 +1,8 @@
-package Desafios.Sudoku.ui.custom.input;
+package Desafios.Projetos.Sudoku.ui.custom.input;
 
-import Desafios.Sudoku.model.Space;
-import Desafios.Sudoku.service.EventEnum;
-import Desafios.Sudoku.service.EventListener;
+import Desafios.Projetos.Sudoku.model.Space;
+import Desafios.Projetos.Sudoku.service.EventEnum;
+import Desafios.Projetos.Sudoku.service.EventListener;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;

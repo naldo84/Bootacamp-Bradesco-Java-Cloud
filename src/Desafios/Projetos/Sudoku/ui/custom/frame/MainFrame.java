@@ -1,4 +1,4 @@
-package Desafios.Sudoku.ui.custom.frame;
+package Desafios.Projetos.Sudoku.ui.custom.frame;
 
 import javax.swing.*;
 import java.awt.*;

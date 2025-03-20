@@ -1,11 +1,11 @@
-package Desafios.Sudoku.service;
+package Desafios.Projetos.Sudoku.service;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import static Desafios.Sudoku.service.EventEnum.CLEAR_SPACE;
+import static Desafios.Projetos.Sudoku.service.EventEnum.CLEAR_SPACE;
 
 public class NotifierService {
     private final Map<EventEnum, List<EventListener>> listeners = new HashMap<>(){{
