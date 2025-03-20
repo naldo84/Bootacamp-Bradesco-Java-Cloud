@@ -13,9 +13,11 @@ public class ContaCorrente extends Conta{
         // TODO: Implemente a lógica para verificar se o saque é permitido considerando o saldo e o limite:
         // Dica: Se saldo - valor >= -limite, o saque é permitido.
         if ((saldo + limite) > valor){
+            saldo -= valor;
             System.out.printf("Saque realizado %.2f%n", valor);
+        } else {
+            System.out.println("Saque invalido: Excede limite");
         }
-
 
         exibirSaldo(); // Exibe o saldo atualizado
     }
