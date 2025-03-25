@@ -1,2 +1,5 @@
 bin/exercicios/TestesExercicios
 /bin/
+/out/
+/.idea
+/Bootacamp-Bradesco-Java-Cloud.iml
