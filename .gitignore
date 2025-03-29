@@ -3,3 +3,5 @@ bin/exercicios/TestesExercicios
 /out/
 /.idea
 /Bootacamp-Bradesco-Java-Cloud.iml
+/target/
+/src/.env
