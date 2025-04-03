@@ -53,12 +53,29 @@ public class Main {
         flyway.migrate();
 
 //        var employee = new EmployeeEntity();
-//        employee.setName("Erinaldo");
-//        employee.setSalary(new BigDecimal("5000"));
-//        employee.setBirthday(OffsetDateTime.now().minusYears(20));
+//        employee.setName("Xandão");
+//        employee.setSalary(new BigDecimal("35000"));
+//        employee.setBirthday(OffsetDateTime.now().minusYears(15));
 //        System.out.println("Employee: " + employee);
 //
 //        employeeDAO.insert(employee);
 //        System.out.println("Employee depois do DAO" + employee);
+
+//        employeeDAO.findAll().forEach(System.out::println);
+//
+//        System.out.println("Encontrado: " + employeeDAO.findById(4));
+
+//        var employee = new EmployeeEntity();
+//        employee.setId(5L);
+//        employee.setName("Juiz Xandevaldo");
+//        employee.setSalary(new BigDecimal("40000"));
+//        employee.setBirthday(OffsetDateTime.now().minusYears(10));
+//        employeeDAO.update(employee);
+
+        //employeeDAO.delete(3);
+
+
+
+
     }
 }
