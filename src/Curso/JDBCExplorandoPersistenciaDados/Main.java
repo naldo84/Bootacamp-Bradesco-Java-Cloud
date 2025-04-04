@@ -3,6 +3,7 @@ package Curso.JDBCExplorandoPersistenciaDados;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.ConnectionUtil;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.EmployeeAuditDAO;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.EmployeeDAO;
+import Curso.JDBCExplorandoPersistenciaDados.persistence.EmployeeParamDAO;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.EmployeeEntity;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.flywaydb.core.Flyway;
@@ -19,6 +20,7 @@ public class Main {
 
     private final static EmployeeDAO employeeDAO = new EmployeeDAO();
     private final static EmployeeAuditDAO employeAuditDAO = new EmployeeAuditDAO();
+    private final static EmployeeParamDAO employeeParamDAO = new EmployeeParamDAO();
 
     public static void main(String[] args) throws SQLException {
 
@@ -55,21 +57,21 @@ public class Main {
         employee.setBirthday(OffsetDateTime.now().minusYears(15));
         System.out.println("Employee: " + employee);
 
-        employeeDAO.insert(employee);
+        employeeParamDAO.insertWithProcedure(employee);
         System.out.println("Employee depois do DAO" + employee);
 //
 //        employeeDAO.findAll().forEach(System.out::println);
 //
 //        System.out.println("Encontrado: " + employeeDAO.findById(1));
 //
-        var employee2 = new EmployeeEntity();
-        employee2.setId(1L);
-        employee2.setName("Eriosvaldo");
-        employee2.setSalary(new BigDecimal("40000"));
-        employee2.setBirthday(OffsetDateTime.now().minusYears(10));
-        employeeDAO.update(employee2);
-        employeeDAO.delete(1);
-
-        employeAuditDAO.findAll().forEach(System.out::println);
+//        var employee2 = new EmployeeEntity();
+//        employee2.setId(1L);
+//        employee2.setName("Eriosvaldo");
+//        employee2.setSalary(new BigDecimal("40000"));
+//        employee2.setBirthday(OffsetDateTime.now().minusYears(10));
+//        employeeDAO.update(employee2);
+//        employeeDAO.delete(1);
+//
+//        employeAuditDAO.findAll().forEach(System.out::println);
     }
 }
