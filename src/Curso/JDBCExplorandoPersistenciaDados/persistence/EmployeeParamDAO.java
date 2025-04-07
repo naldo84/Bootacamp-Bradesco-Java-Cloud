@@ -57,6 +57,35 @@ public class EmployeeParamDAO {
         }
     }
 
+    public void insertBatch(final List<EmployeeEntity> entities) {
+        String sql = "INSERT INTO employees (name, salary, birthday) VALUES (?, ?, ?)";
+
+        try (Connection connection = ConnectionUtil.getConnection()){
+            try(PreparedStatement statement = connection.prepareStatement(sql)){
+                connection.setAutoCommit(false);
+                for  (var entity : entities){
+                    statement.setString(1, entity.getName());
+                    statement.setBigDecimal(2, entity.getSalary());
+                    statement.setTimestamp(3, Timestamp.valueOf(entity.getBirthday().atZoneSimilarLocal(UTC).toLocalDateTime()));
+
+                    statement.addBatch();
+                }
+
+                statement.executeBatch();
+                connection.commit();
+
+            }  catch (SQLException ex){
+                connection.rollback();
+                ex.printStackTrace();
+            }
+
+
+
+        } catch (SQLException ex){
+            ex.printStackTrace();
+        }
+    }
+
     public void update(final EmployeeEntity entity){
         String sql = "UPDATE employees set " +
                 "name = ? , salary = ?, birthday = ? WHERE id = ?";

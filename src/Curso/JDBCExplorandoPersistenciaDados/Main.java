@@ -6,6 +6,7 @@ import Curso.JDBCExplorandoPersistenciaDados.persistence.EmployeeDAO;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.EmployeeParamDAO;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.EmployeeEntity;
 import io.github.cdimascio.dotenv.Dotenv;
+import net.datafaker.Faker;
 import org.flywaydb.core.Flyway;
 
 import java.math.BigDecimal;
@@ -13,7 +14,9 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.OffsetDateTime;
+import java.time.*;
+import java.util.Locale;
+import java.util.stream.Stream;
 
 
 public class Main {
@@ -21,6 +24,7 @@ public class Main {
     private final static EmployeeDAO employeeDAO = new EmployeeDAO();
     private final static EmployeeAuditDAO employeAuditDAO = new EmployeeAuditDAO();
     private final static EmployeeParamDAO employeeParamDAO = new EmployeeParamDAO();
+    private final static Faker faker = new Faker(new Locale("pt", "BR"));
 
     public static void main(String[] args) throws SQLException {
 
@@ -73,5 +77,20 @@ public class Main {
 //        employeeDAO.delete(1);
 //
 //        employeAuditDAO.findAll().forEach(System.out::println);
+
+        var birthday = faker.timeAndDate().birthday();
+        System.out.println("Niver: " + birthday.getClass());
+
+        var entities = Stream.generate(() -> {
+            var employeeN = new EmployeeEntity();
+            employeeN.setName(faker.name().fullName());
+            employeeN.setSalary(new BigDecimal(faker.number().digits(4)));
+            employeeN.setBirthday(OffsetDateTime.of(LocalDate.now().minusYears(faker.number().numberBetween(40, 20)), LocalTime.MIN, ZoneOffset.UTC));
+
+            return employeeN;
+
+        }).limit(2000).toList();
+
+        employeeParamDAO.insertBatch(entities);
     }
 }
