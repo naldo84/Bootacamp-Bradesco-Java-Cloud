@@ -1,5 +1,6 @@
 package Curso.JDBCExplorandoPersistenciaDados.persistence;
 
+import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.ContactEntity;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.EmployeeEntity;
 import com.mysql.cj.jdbc.StatementImpl;
 
@@ -158,7 +159,19 @@ public class EmployeeParamDAO {
 
     public EmployeeEntity findById(final long id){
         var entity = new EmployeeEntity();
-        String sql = "SELECT * FROM employees WHERE id= ?";
+        //String sql = "SELECT * FROM employees INNER JOIN contacts ON contacts.employee_id = employees.id WHERE id = ?";
+        String sql = "SELECT e.id employee_id,\n" +
+                "   e.name, \n" +
+                "   e.salary, \n" +
+                "   e.birthday, \n" +
+                "   c.id contact_id, \n" +
+                "   c.description, \n" +
+                "   c.type \n" +
+                "FROM employees e\n" +
+                "LEFT JOIN contacts c\n" +
+                "ON c.employee_id = e.id " +
+                "WHERE e.id = ?";
+
         try (
                 Connection connection = ConnectionUtil.getConnection();
                 PreparedStatement statement = connection.prepareStatement(sql);
@@ -170,13 +183,26 @@ public class EmployeeParamDAO {
             var resultSet = statement.getResultSet();
 
             if (resultSet.next()){
-
-                entity.setId(resultSet.getLong("id"));
+                entity.setId(resultSet.getLong("employee_id"));
                 entity.setName(resultSet.getString("name"));
                 entity.setSalary(resultSet.getBigDecimal("salary"));
                 var birthdayInstant = resultSet.getTimestamp("birthday").toInstant();
                 var birthday = OffsetDateTime.ofInstant(birthdayInstant, UTC);
                 entity.setBirthday(birthday);
+
+//                entity.setContact(new ContactEntity());
+//                entity.getContact().setId(resultSet.getLong("contact_id"));
+//                entity.getContact().setDescription(resultSet.getString("description"));
+//                entity.getContact().setType(resultSet.getString("type"));
+
+                Long contactId = resultSet.getObject("contact_id", Long.class);
+                if (contactId != null){
+                    ContactEntity contact = new ContactEntity();
+                    contact.setId(contactId);
+                    contact.setDescription(resultSet.getString("description"));
+                    contact.setType(resultSet.getString("type"));
+                    entity.setContact(contact);
+                }
             }
 
 
