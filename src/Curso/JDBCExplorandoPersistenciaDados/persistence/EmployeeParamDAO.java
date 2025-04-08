@@ -2,6 +2,7 @@ package Curso.JDBCExplorandoPersistenciaDados.persistence;
 
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.ContactEntity;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.EmployeeEntity;
+import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.ModuleEntity;
 import com.mysql.cj.jdbc.StatementImpl;
 
 import java.sql.*;
@@ -17,6 +18,8 @@ public class EmployeeParamDAO {
 
     private final ContactDAO contactDAO = new ContactDAO();
 
+    private final AccessDAO accessDAO = new AccessDAO();
+
     public void insert(final EmployeeEntity entity) {
         String sql = "INSERT INTO employees (name, salary, birthday) VALUES (?, ?, ?)";
 
@@ -28,12 +31,13 @@ public class EmployeeParamDAO {
             statement.setTimestamp(3, Timestamp.valueOf(entity.getBirthday().atZoneSimilarLocal(UTC).toLocalDateTime()));
             statement.executeUpdate();
 
-            System.out.printf("Foram afetados %s registros na base de dados: ", statement.getUpdateCount());
-
             if (statement instanceof StatementImpl impl){
                 entity.setId(impl.getLastInsertID());
-
             }
+
+            entity.getModules().stream()
+                    .map(ModuleEntity::getId)
+                    .forEach(m -> accessDAO.insert(entity.getId(), m));
 
         } catch (SQLException ex){
             ex.printStackTrace();
@@ -81,8 +85,6 @@ public class EmployeeParamDAO {
                 connection.rollback();
                 ex.printStackTrace();
             }
-
-
 
         } catch (SQLException ex){
             ex.printStackTrace();

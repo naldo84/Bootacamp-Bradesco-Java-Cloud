@@ -14,4 +14,5 @@ public class EmployeeEntity {
     private BigDecimal salary;
     private OffsetDateTime birthday;
     private List<ContactEntity> contact;
+    private List<ModuleEntity> modules;
 }

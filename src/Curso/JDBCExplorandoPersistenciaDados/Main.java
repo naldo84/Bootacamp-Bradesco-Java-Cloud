@@ -3,6 +3,7 @@ package Curso.JDBCExplorandoPersistenciaDados;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.*;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.ContactEntity;
 import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.EmployeeEntity;
+import Curso.JDBCExplorandoPersistenciaDados.persistence.entity.ModuleEntity;
 import io.github.cdimascio.dotenv.Dotenv;
 import net.datafaker.Faker;
 import org.flywaydb.core.Flyway;
@@ -13,6 +14,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.*;
+import java.util.ArrayList;
 import java.util.Locale;
 import java.util.stream.Stream;
 
@@ -23,6 +25,7 @@ public class Main {
     private final static EmployeeAuditDAO employeAuditDAO = new EmployeeAuditDAO();
     private final static EmployeeParamDAO employeeParamDAO = new EmployeeParamDAO();
     private final static Faker faker = new Faker(new Locale("pt", "BR"));
+    private final static ModuleDAO moduleDAO = new ModuleDAO();
     private final static ContactDAO contatctDAO = new ContactDAO();
 
     public static void main(String[] args) throws SQLException {
@@ -111,5 +114,24 @@ public class Main {
         //System.out.println("Busca: " + employeeParamDAO.findById(2013));
         //employeeParamDAO.findAll().forEach(System.out::println);
 
+
+//        var entities = Stream.generate(() -> {
+//            var employeeN = new EmployeeEntity();
+//            employeeN.setName(faker.name().fullName());
+//            employeeN.setSalary(new BigDecimal(faker.number().digits(4)));
+//            employeeN.setBirthday(OffsetDateTime.of(LocalDate.now().minusYears(faker.number().numberBetween(40, 20)), LocalTime.MIN, ZoneOffset.UTC));
+//            employeeN.setModules(new ArrayList<>());
+//            var moduleAmount = faker.number().numberBetween(1, 4);
+//            for (int i= 0; i < moduleAmount; i++){
+//                var module = new ModuleEntity();
+//                module.setId((long) (i +1));
+//                employeeN.getModules().add(module);
+//            }
+//            return employeeN;
+//
+//        }).limit(5).toList();
+//        entities.forEach(employeeParamDAO::insert);
+
+        moduleDAO.findAll().forEach(System.out::println);
     }
 }
