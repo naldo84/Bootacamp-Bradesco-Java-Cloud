@@ -15,6 +15,8 @@ import static java.util.TimeZone.LONG;
 
 public class EmployeeParamDAO {
 
+    private final ContactDAO contactDAO = new ContactDAO();
+
     public void insert(final EmployeeEntity entity) {
         String sql = "INSERT INTO employees (name, salary, birthday) VALUES (?, ?, ?)";
 
@@ -169,7 +171,7 @@ public class EmployeeParamDAO {
                 "   c.type \n" +
                 "FROM employees e\n" +
                 "LEFT JOIN contacts c\n" +
-                "ON c.employee_id = e.id " +
+                "ON c.employee_id = e.id\n " +
                 "WHERE e.id = ?";
 
         try (
@@ -190,19 +192,34 @@ public class EmployeeParamDAO {
                 var birthday = OffsetDateTime.ofInstant(birthdayInstant, UTC);
                 entity.setBirthday(birthday);
 
+
+                entity.setContact(new ArrayList<>());
+
+                do {
+                    Long contactId = resultSet.getObject("contact_id", Long.class);
+                    if (contactId != null){
+                        var contact = new ContactEntity();
+                        contact.setId(contactId);
+                        contact.setDescription(resultSet.getString("description"));
+                        contact.setType(resultSet.getString("type"));
+                        entity.getContact().add(contact);
+                    }
+
+
+                } while (resultSet.next());
 //                entity.setContact(new ContactEntity());
 //                entity.getContact().setId(resultSet.getLong("contact_id"));
 //                entity.getContact().setDescription(resultSet.getString("description"));
 //                entity.getContact().setType(resultSet.getString("type"));
 
-                Long contactId = resultSet.getObject("contact_id", Long.class);
-                if (contactId != null){
-                    ContactEntity contact = new ContactEntity();
-                    contact.setId(contactId);
-                    contact.setDescription(resultSet.getString("description"));
-                    contact.setType(resultSet.getString("type"));
-                    entity.setContact(contact);
-                }
+//                Long contactId = resultSet.getObject("contact_id", Long.class);
+//                if (contactId != null){
+//                    ContactEntity contact = new ContactEntity();
+//                    contact.setId(contactId);
+//                    contact.setDescription(resultSet.getString("description"));
+//                    contact.setType(resultSet.getString("type"));
+//                    entity.setContact(contact);
+//                }
             }
 
 

@@ -66,7 +66,7 @@ public class Main {
 //
 //        employeeDAO.findAll().forEach(System.out::println);
 //
-//        System.out.println("Encontrado: " + employeeDAO.findById(1));
+//        System.out.println("Encontrado: " + employeeDAO.findById(2013));
 //
 //        var employee2 = new EmployeeEntity();
 //        employee2.setId(1L);
@@ -94,13 +94,22 @@ public class Main {
 //        employeeParamDAO.insertBatch(entities);
 //
 //
-//        var contact = new ContactEntity();
-//        contact.setDescription("teste@testecontact.com.br");
-//        contact.setType("email");
-//        contact.setEmployee(employee);
-//        contatctDAO.insert(contact);
+//        var contact1 = new ContactEntity();
+//        contact1.setDescription("teste@testecontact.com.br");
+//        contact1.setType("email");
+//        contact1.setEmployee(employee);
+//        contatctDAO.insert(contact1);
+//        System.out.println("Employee: " + employee);
+//
+//        var contact2 = new ContactEntity();
+//        contact2.setDescription("1199999999");
+//        contact2.setType("celular");
+//        contact2.setEmployee(employee);
+//        contatctDAO.insert(contact2);
 //        System.out.println("Employee: " + employee);
 
-        System.out.println(employeeParamDAO.findById(2010));
+        //System.out.println("Busca: " + employeeParamDAO.findById(2013));
+        //employeeParamDAO.findAll().forEach(System.out::println);
+
     }
 }
